@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Dictionary" customModuleProvider="target">
             <connections>
-                <outlet property="kelimetableview" destination="aop-kC-dwZ" id="OOv-53-psG"/>
+                <outlet property="detailTableView" destination="aop-kC-dwZ" id="qdq-ty-RwF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

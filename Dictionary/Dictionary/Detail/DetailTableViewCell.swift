@@ -12,8 +12,10 @@ class DetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var partOfSpeechLbl: UILabel!
     @IBOutlet weak var definitionLbl: UILabel!
-    
-    
+    @IBOutlet weak var exampleTitleLbl: UILabel!
+    @IBOutlet weak var exampleLbl: UILabel!
+
+    @IBOutlet weak var numberLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,13 +28,17 @@ class DetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func set(model: DictionaryElement) {
-        if let partOfSpeech = model.meanings?.first?.partOfSpeech {
-              partOfSpeechLbl.text = partOfSpeech
-          }
-          
-          if let definition = model.meanings?.first?.definitions?.first?.definition {
-              definitionLbl.text = definition
-          }
+    func set(model: MeaningList) {
+       
+        partOfSpeechLbl.text = model.partOfSpeech
+        definitionLbl.text = model.definition
+        if model.example.isEmpty {
+            exampleLbl.isHidden = true
+            exampleTitleLbl.isHidden = true
+        }else{
+            exampleLbl.text = model.example
+        }
       }
 }
+
+
