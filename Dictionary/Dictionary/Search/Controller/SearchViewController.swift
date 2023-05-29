@@ -55,13 +55,16 @@ class SearchViewController: UIViewController {
                     self?.navigationController?.pushViewController(detailViewController, animated: true)
                 }
             case .failure(let error):
-                print("Hata oluştu: \(error)")
+                DispatchQueue.main.async { [weak self] in
+                    if let viewController = self {
+                        Alert.showAlert(alertTitle: "Error", alertMessage: "Word not found.", defaultTitle: "OK", viewController: viewController)
+                    }
+                    print("Hata oluştu: \(error)")
+                }
             }
         }
     }
 }
-
-
 
 extension SearchViewController: UISearchBarDelegate {
     

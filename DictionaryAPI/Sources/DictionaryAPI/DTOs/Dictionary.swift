@@ -14,15 +14,6 @@ public struct DictionaryElement: Decodable {
     public let meanings: [Meaning]?
     public let license: License?
     public let sourceUrls: [String]?
-    
-    init(word: String?, phonetic: String?, phonetics: [Phonetic]?, meanings: [Meaning]?, license: License?, sourceUrls: [String]?) {
-        self.word = word
-        self.phonetic = phonetic
-        self.phonetics = phonetics
-        self.meanings = meanings
-        self.license = license
-        self.sourceUrls = sourceUrls
-    }
 }
 
 // MARK: - License
