@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,11 +13,12 @@
             <connections>
                 <outlet property="button" destination="HHm-Ez-Hfi" id="2b8-TO-1hL"/>
                 <outlet property="searchBar" destination="h3E-zC-oY1" id="B2J-Tx-QyY"/>
+                <outlet property="tableView" destination="OHE-3B-pib" id="1f1-zL-0Lr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="Sea">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -43,18 +45,43 @@
                         <outlet property="delegate" destination="-1" id="t4f-df-WVN"/>
                     </connections>
                 </searchBar>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3M-fEI">
+                    <rect key="frame" x="8" y="103" width="377" height="300"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftm-3D-1EZ">
+                            <rect key="frame" x="0.0" y="0.0" width="377" height="21.666666666666668"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OHE-3B-pib">
+                            <rect key="frame" x="0.0" y="29.666666666666657" width="377" height="270.33333333333337"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="neD-FY-5vw"/>
+                                <outlet property="delegate" destination="-1" id="SFb-eg-nKh"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="axz-gY-071"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="h3E-zC-oY1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3gk-SR-srq"/>
                 <constraint firstItem="h3E-zC-oY1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8e5-vt-u3d"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kRA-3M-fEI" secondAttribute="trailing" constant="8" id="8eR-4z-min"/>
                 <constraint firstItem="h3E-zC-oY1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Oiy-6R-P1H"/>
                 <constraint firstItem="HHm-Ez-Hfi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pnq-Yo-8aJ"/>
+                <constraint firstItem="kRA-3M-fEI" firstAttribute="top" secondItem="h3E-zC-oY1" secondAttribute="bottom" id="SH9-6u-ZAH"/>
                 <constraint firstAttribute="trailing" secondItem="HHm-Ez-Hfi" secondAttribute="trailing" id="Yda-cN-Uod"/>
                 <constraint firstAttribute="bottom" secondItem="HHm-Ez-Hfi" secondAttribute="bottom" id="cr0-qY-jFZ"/>
+                <constraint firstItem="kRA-3M-fEI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="yxV-0W-5wv"/>
             </constraints>
-            <point key="canvasLocation" x="-396" y="-17"/>
+            <point key="canvasLocation" x="-396.18320610687022" y="-17.605633802816904"/>
         </view>
     </objects>
     <resources>
