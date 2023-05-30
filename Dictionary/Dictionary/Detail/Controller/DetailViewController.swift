@@ -7,6 +7,7 @@
 
 import UIKit
 import DictionaryAPI
+import AVFoundation
 
 struct MeaningList {
     let id: Int
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController {
     var meaningList: [MeaningList] = []
     var synonyms: [String] = []
     var collectionView: UICollectionView!
+    var audioPlayer: AVPlayer?
     
     init(entries: [DictionaryElement]) {
         self.entries = entries
@@ -41,12 +43,51 @@ class DetailViewController: UIViewController {
         registerNewsTableViewCell()
         setupCollectionView()
         fetchSynonyms()
+        voiceButton()
+        addCustomBackButton()
+    }
+    
+    func addCustomBackButton() {
+        let backButton = CustomBackButton()
+        let backButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = backButtonItem
     }
     
     private func registerNewsTableViewCell() {
         detailTableView.register(UINib(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewCell")
     }
     
+    func voiceButton(){
+        if let audioURLString = entries.first?.phonetics?.first?.audio {
+            voiceBtn.isHidden = false
+            voiceBtn.isEnabled = true
+            setupAudioPlayer(audioURLString)
+        } else {
+            voiceBtn.isHidden = true
+            voiceBtn.isEnabled = false
+        }
+    }
+    
+    @IBAction func voiceBtnTapped(_ sender: UIButton) {
+        if audioPlayer?.timeControlStatus == .playing {
+            audioPlayer?.pause()
+        } else {
+            audioPlayer?.play()
+        }
+    }
+    
+    func setupAudioPlayer(_ audioURLString: String) {
+        guard let audioURL = URL(string: audioURLString) else { return }
+        let playerItem = AVPlayerItem(url: audioURL)
+        audioPlayer = AVPlayer(playerItem: playerItem)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(audioPlayerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
+    }
+    
+    @objc func audioPlayerDidFinishPlaying(_ notification: Notification) {
+        
+        audioPlayer?.seek(to: CMTime.zero)
+    }
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
