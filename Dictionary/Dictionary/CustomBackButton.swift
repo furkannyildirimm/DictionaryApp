@@ -25,7 +25,6 @@ class CustomBackButton: UIButton {
     }
     
     @objc private func backButtonTapped() {
-        // Geri düğmesi tıklandığında yapılacak işlemler
         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
             navigationController.popViewController(animated: true)
         }

@@ -58,7 +58,15 @@ class DetailViewController: UIViewController {
     }
     
     func voiceButton(){
-        if let audioURLString = entries.first?.phonetics?.first?.audio {
+        var audioSet: Set<String> = []
+        for phonetics in entries {
+            for phonetic in phonetics.phonetics ?? [] {
+                if phonetic.audio != ""{
+                    audioSet.insert(phonetic.audio ?? "")
+                }
+            }
+        }
+        if let audioURLString = audioSet.first {
             voiceBtn.isHidden = false
             voiceBtn.isEnabled = true
             setupAudioPlayer(audioURLString)
@@ -141,17 +149,19 @@ class DetailViewController: UIViewController {
     
     func createMeaningList() -> [MeaningList] {
         var meaningList: [MeaningList] = []
-        guard let meanings = entries.first?.meanings else { return [] }
-        for meaning in meanings {
-            guard let partOfSpeech = meaning.partOfSpeech?.capitalized else {
-                continue
-            }
-            guard let definitions = meaning.definitions else {
-                continue
-            }
-            for (index, definition) in definitions.enumerated() {
-                let meaningItem = MeaningList(id: index + 1, partOfSpeech: partOfSpeech, definition: definition.definition ?? "", example: definition.example ?? "")
-                meaningList.append(meaningItem)
+        
+        for meanings in entries {
+            for meaning in meanings.meanings ?? [] {
+                guard let partOfSpeech = meaning.partOfSpeech?.capitalized else {
+                    continue
+                }
+                guard let definitions = meaning.definitions else {
+                    continue
+                }
+                for (index, definition) in definitions.enumerated() {
+                    let meaningItem = MeaningList(id: index + 1, partOfSpeech: partOfSpeech, definition: definition.definition ?? "", example: definition.example ?? "")
+                    meaningList.append(meaningItem)
+                }
             }
         }
         return meaningList
