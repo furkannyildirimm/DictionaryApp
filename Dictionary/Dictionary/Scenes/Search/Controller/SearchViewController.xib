@@ -22,6 +22,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3M-fEI">
+                    <rect key="frame" x="8" y="103" width="377" height="674"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftm-3D-1EZ">
+                            <rect key="frame" x="0.0" y="0.0" width="377" height="21.666666666666668"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21.670000000000002" id="QTe-Au-gCB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OHE-3B-pib">
+                            <rect key="frame" x="0.0" y="29.666666666666686" width="377" height="644.33333333333326"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="neD-FY-5vw"/>
+                                <outlet property="delegate" destination="-1" id="SFb-eg-nKh"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHm-Ez-Hfi">
                     <rect key="frame" x="0.0" y="777" width="393" height="75"/>
                     <color key="backgroundColor" red="0.32549020649999999" green="0.39607840779999998" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -45,28 +67,6 @@
                         <outlet property="delegate" destination="-1" id="t4f-df-WVN"/>
                     </connections>
                 </searchBar>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3M-fEI">
-                    <rect key="frame" x="8" y="103" width="377" height="300"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftm-3D-1EZ">
-                            <rect key="frame" x="0.0" y="0.0" width="377" height="21.666666666666668"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OHE-3B-pib">
-                            <rect key="frame" x="0.0" y="29.666666666666657" width="377" height="270.33333333333337"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="neD-FY-5vw"/>
-                                <outlet property="delegate" destination="-1" id="SFb-eg-nKh"/>
-                            </connections>
-                        </tableView>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="300" id="axz-gY-071"/>
-                    </constraints>
-                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -79,6 +79,7 @@
                 <constraint firstItem="kRA-3M-fEI" firstAttribute="top" secondItem="h3E-zC-oY1" secondAttribute="bottom" id="SH9-6u-ZAH"/>
                 <constraint firstAttribute="trailing" secondItem="HHm-Ez-Hfi" secondAttribute="trailing" id="Yda-cN-Uod"/>
                 <constraint firstAttribute="bottom" secondItem="HHm-Ez-Hfi" secondAttribute="bottom" id="cr0-qY-jFZ"/>
+                <constraint firstItem="HHm-Ez-Hfi" firstAttribute="top" secondItem="kRA-3M-fEI" secondAttribute="bottom" id="uik-SK-hOw"/>
                 <constraint firstItem="kRA-3M-fEI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="yxV-0W-5wv"/>
             </constraints>
             <point key="canvasLocation" x="-396.18320610687022" y="-17.605633802816904"/>

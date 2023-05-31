@@ -6,15 +6,19 @@
 //
 
 import UIKit
-import DictionaryAPI
 
-class DetailTableViewCell: UITableViewCell {
+
+final class DetailTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var partOfSpeechLbl: UILabel!
-    @IBOutlet weak var definitionLbl: UILabel!
-    @IBOutlet weak var exampleTitleLbl: UILabel!
-    @IBOutlet weak var exampleLbl: UILabel!
-    @IBOutlet weak var numberLbl: UILabel!
+    // MARK: - IBOUTLETS
+    
+    @IBOutlet private weak var partOfSpeechLbl: UILabel!
+    @IBOutlet private weak var definitionLbl: UILabel!
+    @IBOutlet private weak var exampleTitleLbl: UILabel!
+    @IBOutlet private weak var exampleLbl: UILabel!
+    @IBOutlet private weak var numberLbl: UILabel!
+    
+    // MARK: - OVERRIDE FUNCTIONS
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +31,8 @@ class DetailTableViewCell: UITableViewCell {
         exampleLbl.isHidden = true
         exampleTitleLbl.isHidden = true
     }
+    
+    // MARK: - INTERNAL FUNCTIONS
     
     func set(model: MeaningList) {
         partOfSpeechLbl.text = model.partOfSpeech
@@ -43,7 +49,6 @@ class DetailTableViewCell: UITableViewCell {
         }
         numberLbl.text = "\(model.id) -"
     }
-    
 }
 
 

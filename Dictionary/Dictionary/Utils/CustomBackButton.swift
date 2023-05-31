@@ -5,10 +5,9 @@
 //  Created by STARK on 29.05.2023.
 //
 
-import Foundation
 import UIKit
 
-class CustomBackButton: UIButton {
+final class CustomBackButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
