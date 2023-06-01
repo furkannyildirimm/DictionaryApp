@@ -54,12 +54,26 @@ final class DetailViewController: UIViewController, LoadingShowable {
     }
     
     private func displayTitleAndSubtitle() {
-        guard let word = viewModel.entries.first?.word?.capitalized, let phonetic = viewModel.entries.first?.phonetics?.first?.text else {
-            return
+        if let entry = viewModel.entries.first {
+            if let word = entry.word?.capitalized {
+                titleLabel.isHidden = false
+                titleLabel.text = word
+            } else {
+                titleLabel.isHidden = true
+            }
+            
+            if let phonetic = entry.phonetics?.first?.text {
+                subtitleLabel.isHidden = false
+                subtitleLabel.text = phonetic
+            } else {
+                subtitleLabel.isHidden = true
+            }
+        } else {
+            titleLabel.isHidden = true
+            subtitleLabel.isHidden = true
         }
-        titleLabel.text = word
-        subtitleLabel.text = phonetic
     }
+    
     
     private func addCustomBackButton() {
         let backButton = CustomBackButton()
@@ -129,7 +143,7 @@ extension DetailViewController: UICollectionViewDataSource {
         cell.layer.borderColor = UIColor.black.cgColor
         
         let label = UILabel(frame: cell.bounds)
-        label.text = viewModel.synonyms[indexPath.item] // cell boyutuu labela göre ayarla !!!
+        label.text = viewModel.synonyms[indexPath.item]
         label.textColor = .black
         label.textAlignment = .center
         cell.contentView.addSubview(label)

@@ -17,9 +17,9 @@ final class SearchViewController: UIViewController {
     @IBOutlet private weak var button: UIButton!
     
     // MARK: - PROPERTIES
-
+    
     var viewModel: SearchViewModel = SearchViewModel()
-
+    
     // MARK: - OVERRIDE FUNCTIONS
     
     override func viewDidLoad() {
@@ -32,12 +32,12 @@ final class SearchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         viewModel.loadSearchEntries()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchBar.resignFirstResponder()
     }
-
+    
     // MARK: - PRIVATE FUNCTIONS
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -116,11 +116,11 @@ extension SearchViewController: SearchViewModelDelegate {
             print("Hata oluştu: \(error)")
         }
     }
-
+    
     func push(vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func reloadData() {
         tableView.reloadData()
         searchBar.text = ""
