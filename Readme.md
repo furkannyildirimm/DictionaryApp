@@ -15,6 +15,8 @@ The application provides a user-friendly interface and includes the following fe
 
 In this project, we preferred to use the Model-View-ViewModel (MVVM) design pattern.
 
+![1](Image/1.png)
+
 ### What is?
 - MVVM (Model-View-ViewModel) is a design pattern used in software development. This pattern separates the user interface (View) from the data and logic (Model), utilizing a mediator layer called ViewModel as a communication bridge between them.
 
