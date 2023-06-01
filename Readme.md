@@ -37,7 +37,7 @@ The MVVM design pattern includes the following basic components:
 
 Iphone 14 Pro            | Iphone SE
 :-------------------------:|:-------------------------:
-![](https://github.com/furkannyildirimm/FurkanYildirim_HW3/blob/main/GIF/1.gif)  |  ![](https://github.com/furkannyildirimm/FurkanYildirim_HW3/blob/main/GIF/2.gif)
+![](https://github.com/furkannyildirimm/FurkanYildirim_HW3/blob/main/GIFs/1.gif)  |  ![](https://github.com/furkannyildirimm/FurkanYildirim_HW3/blob/main/GIFs/2.gif)
 
 ## Used Technologies
 
