@@ -138,6 +138,23 @@ extension DetailViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICOLLECTIONVIEWDELEGATEFLOWLAYOUT
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let synonym = viewModel.synonyms[indexPath.item]
+        let label = UILabel()
+        label.text = synonym
+        label.font = UIFont.systemFont(ofSize: 17)
+        let labelSize = label.sizeThatFits(CGSize(width: collectionView.frame.width, height: CGFloat.greatestFiniteMagnitude))
+        if labelSize.width > 100 || labelSize.height > 40 {
+            return CGSize(width: labelSize.width + 20, height: 40)
+        } else {
+            return CGSize(width: 100, height: 40)
+        }
+    }
+}
+
 //MARK: - UICOLLECTIONVIEWDELEGATE
 
 extension DetailViewController: UICollectionViewDelegate {
