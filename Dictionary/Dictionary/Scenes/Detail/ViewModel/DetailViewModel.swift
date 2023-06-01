@@ -61,6 +61,7 @@ final class DetailViewModel {
             case .success(let synonyms):
                 self.synonyms = synonyms
                 self.delegate?.fetchedData()
+                
             case .failure(let error):
                 print("Hata oluştu: \(error)")
             }

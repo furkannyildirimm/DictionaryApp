@@ -10,6 +10,8 @@ import UIKit
 
 final class DetailTableViewCell: UITableViewCell {
     
+    static let identifier = String(describing: DetailTableViewCell.self)
+    
     // MARK: - IBOUTLETS
     
     @IBOutlet private weak var partOfSpeechLbl: UILabel!

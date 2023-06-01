@@ -8,6 +8,8 @@
 import UIKit
 
 final class SearchCell: UITableViewCell {
+    
+    static let identifier = String(describing: SearchCell.self)
 
     // MARK: - IBOUTLETS
     

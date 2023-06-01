@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, LoadingShowable {
     
     // MARK: - IBOUTLETS
     
@@ -31,6 +31,7 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showLoading()
         detailTableView.register(cellClass: DetailTableViewCell.self)
         setupCollectionView()
         viewModel.fetchSynonyms()
@@ -85,12 +86,12 @@ final class DetailViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SynonymCell")
         
-        let headerLabel = UILabel(frame: CGRect(x: 10, y: 10, width: collectionView.frame.width, height: 30))
-        headerLabel.text = "Synonym"
-        headerLabel.textAlignment = .left
-        headerLabel.textColor = .black
-        headerLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        collectionView.addSubview(headerLabel)
+        let footerTitleLabel = UILabel(frame: CGRect(x: 10, y: 10, width: collectionView.frame.width, height: 30))
+        footerTitleLabel.text = "Synonym"
+        footerTitleLabel.textAlignment = .left
+        footerTitleLabel.textColor = .black
+        footerTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        collectionView.addSubview(footerTitleLabel)
         
         let viewFooter = UIView(frame: CGRect(x: 0, y: 0, width: detailTableView.frame.width, height: 0))
         viewFooter.addSubview(collectionView)
@@ -106,7 +107,7 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
         let entry = viewModel.meaningList[indexPath.row]
         cell.set(model: entry)
         return cell
@@ -128,7 +129,7 @@ extension DetailViewController: UICollectionViewDataSource {
         cell.layer.borderColor = UIColor.black.cgColor
         
         let label = UILabel(frame: cell.bounds)
-        label.text = viewModel.synonyms[indexPath.item]
+        label.text = viewModel.synonyms[indexPath.item] // cell boyutuu labela göre ayarla !!!
         label.textColor = .black
         label.textAlignment = .center
         cell.contentView.addSubview(label)
@@ -150,6 +151,7 @@ extension DetailViewController: UICollectionViewDelegate {
 
 extension DetailViewController: DetailViewModelDelegate {
     func fetchedData() {
+        self.hideLoading()
         collectionView.reloadData()
         let height = collectionView.collectionViewLayout.collectionViewContentSize.height
         collectionView.frame.size.height = height
