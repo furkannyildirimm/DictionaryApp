@@ -22,7 +22,7 @@ In this project, we preferred to use the Model-View-ViewModel (MVVM) design patt
 
 - MVVM reduces the complexity of software by making application code easier to understand, maintain, and enhance. It also increases the testability of the software and facilitates easier design of the user interface.
 
-###Basic Components
+### Basic Components
 
 The MVVM design pattern includes the following basic components:
 
