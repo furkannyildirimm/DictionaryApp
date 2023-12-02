@@ -47,7 +47,7 @@ Iphone 14 Pro            | Iphone 14 Pro Max
 - Dictionary API: An English dictionary API that allows you to fetch the definitions, parts of speech, and example sentences of English words. This API uses the URL structure "https://api.dictionaryapi.dev/api/v2/entries/en/{word}" where you can replace {word} with the desired English word to make the request. The API response is in JSON format and includes the different meanings, example sentences, and part of speech for the requested word.
 - Alamofire: A Swift library used for making HTTP requests.
 - AVFoundation: A Swift framework used for playing audio pronunciations.
-- Core Data: A framework used for local data storage.
+- Core Data: A framework used for local data storage..
 
 
 
